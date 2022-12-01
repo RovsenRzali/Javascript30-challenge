@@ -65,11 +65,50 @@ console.log(fullNames);
     const ordered = inventors.sort((a,b) => a.year>b.year ? 1 : -1)
     console.log(ordered)
 
+
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live?
-
 const totalYears = inventors.reduce((total,inventor) => {
-  return total + (inventor.passed - inventor.year)
+  return total += inventor.passed - inventor.year
 },0)
 
-console.log(totalYears)
+console.table(totalYears);
+
+//prototurk .reduce() izahı;
+const countNames = people.reduce((allNames,name)=>{
+if(name in allNames){
+  allNames[name]++
+} else{
+  allNames[name]=1
+} 
+return allNames
+},{})
+
+console.log(countNames)
+
+
+let group = "year"
+let groupYear = inventors.reduce((acc,product)=>{
+  let key = product[group]
+  if(!acc[key]) {
+    acc[key]=[]
+  } 
+  acc[key].push(product)
+  return acc
+},{})
+
+console.log(groupYear)
+
+// 5. Sort the inventors by years lived
+
+const oldest = inventors.sort((a,b)=>{
+  const lastGuy =  a.passed - a.year
+  const nextGuy =  b.passed - b.year
+  if(lastGuy>nextGuy) {
+    return -1
+  } else {
+    return 1
+  }
+}) 
+
+console.table(oldest)
