@@ -129,3 +129,49 @@ const links = [category.querySelectorAll('a')] */
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+
+const alpha = people.sort(function(lastone,nextone){
+//const parts = lastone.split(', ')
+const [alast,afirst] = lastone.split(', ')
+const [blast,bfirst] = nextone.split(', ')
+return alast > blast ? 1 : -1
+})
+console.log(alpha)
+
+
+// 8. Reduce Exercise
+// Sum up the instances of each of these
+
+const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', 'pogostick'];
+
+const transportation = data.reduce((obj,item)=>{
+ if(!obj[item]) {
+   obj[item] = 0
+ } 
+   obj[item]++
+   return obj
+ 
+},{})
+
+console.log(transportation)
+
+
+
+//`${data[i]}`
+
+ for (i=0;i<15;i++){ 
+  let message = ""
+
+  if ( Number(transportation[`${data[i]}`]) % 2 ==0) {
+    message += transportation[`${data[i]}`] + " "
+    document.querySelector('#result').innerHTML = 'cutler:' +  message + '<br>'
+
+  } else{
+    document.querySelector('#result').innerHTML += 'tekler:' +   (transportation[`${data[i]}`] -1) / 2
+  }
+
+  } 
+
+
+
+
