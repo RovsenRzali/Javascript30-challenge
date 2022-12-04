@@ -15,22 +15,57 @@
     { text: 'Nice Nice Nice!', id: 542328 }
   ];
 
-  document.querySelector('#result').innerHTML=people[0]['name']
 
 // Some and Every Checks
 // Array.prototype.some() // is at least one person 19?
+  const isAdult = people.some((person)=> {
+    const currentyear = (new Date()).getFullYear()
+    if(currentyear - person.year >=19) {
+        return person
+    }
+  })
 
-//   const isAdult = people.some((person)=> {
-//     const currentyear = (new Date()).getFullYear()
-//     if(currentyear - person.year >=19) {
-//         return true
-//     }
-//   })
-
-const isAdult = people.some((person)=>(new Date().getFullYear())-person.year >= 19)
+// const isAdult = people.some((person)=>(new Date().getFullYear())-person.year >= 19)
   console.log(isAdult)
 
-document.querySelector('#result').innerHTML= isAdult
 
 // Array.prototype.every() // is everyone 19?
 
+const allAdults = people.every((person)=>{
+    const currentyear = (new Date()).getFullYear()
+    if(currentyear - person.year >=19) {
+        return person
+    }
+})
+
+console.log(allAdults)
+
+// Array.prototype.find()
+// Find is like filter, but instead returns just the one you are looking for
+// find the comment with the ID of 823423
+
+let error = "Id couldnt find"
+let personId = 2039841
+const comment = comments.find((comment) => {
+    if (comment.id === personId) {
+        return comment.id
+    } 
+})
+
+console.log(comment || error)
+
+
+const index = comments.findIndex((personId)=>{
+    if (personId.id === 542328) {
+        return personId
+    }
+})
+console.log(index)
+console.table(comments)
+
+
+const newComments = [
+    ...comments.slice(0,index),
+    ...comments.slice(index+1)
+]
+console.table(newComments)
