@@ -39,4 +39,6 @@ function makeGreen() {
    console.log(p)
    console.dir(p) // property sin göstərəcək
 
+// Grouping together
    
+
